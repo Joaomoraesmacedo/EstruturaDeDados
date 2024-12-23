@@ -1,0 +1,6 @@
+#InicializaPilha(P)
+#PilhaVazia(P)
+#PilhaCheia(P)
+#Empilha(P,x)
+#Desempilha(P,x)
+#ElementoDoTopo(P)
