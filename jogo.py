@@ -38,16 +38,18 @@ def Cria_Pilhas_Aleatórias(n: int, pilha:Pilha, Lista: list[Pilha]):
         Insere_num(x, pilha)
 
 
-def Troca_Pilha(P_Origem: Pilha, P_Destino: Pilha): #Ver se é bom fazer cada else para problemas especificos: Eduarda 
-    if not P_Origem.pilha_vazia() and not P_Destino.pilha_cheia():   
-        if  P_Destino.pilha_vazia() or P_Origem.elemento_do_topo() == P_Destino.elemento_do_topo():    
-            x = P_Origem.desempilha()
-            P_Destino.empilha(x)
+def Troca_Pilha(P_Origem: Pilha, P_Destino: Pilha): 
+    if not P_Origem.pilha_vazia():
+        if not P_Destino.pilha_cheia():   
+            if  P_Destino.pilha_vazia() or P_Origem.elemento_do_topo() == P_Destino.elemento_do_topo():    
+                x = P_Origem.desempilha()
+                P_Destino.empilha(x)
+            else:
+                print("Troca inválida:O elemento do topo da pilha de origem é diferende do topo da pilha de destino!")
         else:
-            print("Troca inválida!!")
+            print("Troca inválida: A pilha de destino está cheia!")
     else:
-        print("Troca inválida!!")
-
+        print("Troca inválida: A pilha de origem está vazia!")
 
 def Ultimo_elem(P: Pilha):
     "blabla"
@@ -92,6 +94,20 @@ def Verifica_todas_pilhas(Lista: list[Pilha]) -> bool:
             return False
     return True
 
+"""def imprime_lista(Lista: list[Pilha],n):
+    num: int = n-1
+    aux = Pilha()
+    for pilha in Lista:
+        while not pilha.pilha_vazia():
+            print(pilha.elemento_do_topo())
+            x = pilha.desempilha()
+            aux.empilha(x)
+        print(f"P{n-num}")
+        num -= 1
+        Arruma_pilha(aux, pilha)"""
+        
+
+        
 def main():
     p1 = Pilha()
     p2 = Pilha()
@@ -115,15 +131,16 @@ def main():
     
     #Printa todas as pilhas na lista de pilhas 
     #Printar em vertical: Eduarda 
-    for i, pilha in (Lista):
+    """imprime_lista(Lista, n)"""""
+    for i, pilha in enumerate(Lista):
         print(f"Pilha {i + 1}: {pilha.elem}")
 
     #Verifica a quantidade de trocas necessárias para vencer o jogo 
     cont: int = 0
     #BLABLABLA
     while Verifica_todas_pilhas(Lista) == False:
-        p_desempilha = int(input("Digite o número da pilha que deseja desempilhar: "))
-        p_empilha = int(input("Digite o número da pilha que deseja empilhar: "))
+        p_desempilha = int(input("Digite o número da pilha de origem: "))
+        p_empilha = int(input("Digite o número da pilha de destino: "))
         Troca_Pilha(Lista[p_desempilha - 1], Lista[p_empilha - 1])
         cont +=1
         for i, pilha in enumerate(Lista): #printar na vertical
