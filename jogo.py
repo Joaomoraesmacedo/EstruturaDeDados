@@ -15,7 +15,7 @@ def add_pilhas(n:int, lista_total: list[Pilha]) -> list[Pilha]:
     return lista_util
 
 
-def Insere_num(x:int, p:Pilha):
+def Insere_num(x:int, p:Pilha) -> Pilha:
     '''
     Insere o número no topo *x*, na pilha *p*, se ela não estiver cheia.
 
@@ -37,7 +37,7 @@ def Insere_num(x:int, p:Pilha):
     if not p.pilha_cheia():
         p.empilha(x)
 
-def Arruma_pilha(p_inicial: Pilha, p_final:Pilha):
+def Arruma_pilha(p_inicial: Pilha, p_final:Pilha) -> Pilha:
     '''
     Transfere todos os elementos da *p_inicial* na *p_final*
 
@@ -54,18 +54,22 @@ def Arruma_pilha(p_inicial: Pilha, p_final:Pilha):
                     y = p_inicial.desempilha()
                     p_final.empilha(y)
 
-def Verifica_x(x: int, Lista:list[Pilha]) -> bool: #Usar pilha aux: João
-    contador = 0 #N 
-    for pilha in Lista: #N 
-        for j in range(pilha.topo+1): #Usar o arruma pilha 
-            if x == pilha.elem[j]:
-                contador += 1 # N 
-    if contador == (pilha.TamMax + 1): #nn
+def Verifica_x(x: int, Lista:list[Pilha]) -> bool: 
+    contador = 0 
+    aux = Pilha()
+    for pilha in Lista: 
+        while not pilha.pilha_vazia():
+            j = pilha.desempilha()
+            aux.empilha(j)
+            if x == j:
+                contador += 1
+        Arruma_pilha(aux, pilha)
+    if contador == (pilha.TamMax + 1):
         return False
     else:
         return True
 
-def Cria_Pilhas_Aleatórias(n: int, pilha:Pilha, Lista: list[Pilha]):
+def Cria_Pilhas_Aleatórias(n: int, pilha:Pilha, Lista: list[Pilha]) -> Pilha:
     '''
     Cria uma pilha com números aleatórios que estão entre 1 e *n*
 
@@ -83,7 +87,7 @@ def Cria_Pilhas_Aleatórias(n: int, pilha:Pilha, Lista: list[Pilha]):
         Insere_num(x, pilha)
 
 
-def Troca_Pilha(P_Origem: Pilha, P_Destino: Pilha): 
+def Troca_Pilha(P_Origem: Pilha, P_Destino: Pilha) -> Pilha: 
     '''
     Transfere o elemento do topo da *P_Origem* para o topo da *P_Destino*, porém, a *P_Destino* não pode estar cheia,
     a *P_Origem* não pode estar vazia, e o elemento do topo da *P_Origem* deve ser igual ao elemento do topo da *P_Destino*
@@ -149,7 +153,7 @@ def Verifica_pilha(P_verificar: Pilha) -> bool:
     >>> Verifica_pilha(p3)
     False    
     '''
-    if  P_verificar.pilha_vazia(): #Pilha_Vazia -> correto
+    if  P_verificar.pilha_vazia(): 
         return True
     p_Armazenador = Pilha()
     num_pilha = Ultimo_elem(P_verificar)
@@ -185,7 +189,7 @@ def Verifica_todas_pilhas(Lista: list[Pilha]) -> bool:
             return False
     return True
 
-def imprime_lista(Lista: list[Pilha],n):
+def imprime_lista(Lista: list[Pilha],n): #FAZER SE SOBRAR TEMPO e o Franklin quiser MUITOOO
     '''
     Pedir ajuda pro meu amor
     '''
@@ -217,7 +221,7 @@ def main():
     n: int = int(input("Digite o numero de pilhas:  "))
     Lista:list = add_pilhas(n, Lista_de_pilhas_total)
     
-    #Gera n pilhas com números aleatórios 
+    #Gera n pilhas com números de 1 até n
     contador:int = 0
     while contador != n:
         Cria_Pilhas_Aleatórias(n, Lista[contador],Lista)
