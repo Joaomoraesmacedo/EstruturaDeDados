@@ -55,6 +55,25 @@ def Arruma_pilha(p_inicial: Pilha, p_final:Pilha) -> Pilha:
                     p_final.empilha(y)
 
 def Verifica_x(x: int, Lista:list[Pilha]) -> bool: 
+    '''
+    Retorna False caso já tenha aparecido o número já tenha sido adicionado na lista de pilhas *Lista* o máximo de vezes possíveis 
+    >>> p1 = [1, 2, 2, 1]
+    >>> p1 = [2, 2, '', '']
+    >>> p1 = ['', '', '', '']
+    >>> p1 = ['', '', '', '']
+    >>> Lista = [p1, p2, p3, p4]
+    >>> x = 2
+    >>> Verifica_x(x, Lista)
+    False
+    >>> p1 = [1, 2, 2, 2]
+    >>> p1 = [1, 2, '', '']
+    >>> p1 = ['', '', '', '']
+    >>> p1 = ['', '', '', '']
+    >>> Lista = [p1, p2, p3, p4]
+    >>> x = 1
+    >>> Verifica_x(x, Lista)
+    True    
+            '''
     contador = 0 
     aux = Pilha()
     for pilha in Lista: 
