@@ -56,7 +56,7 @@ def Arruma_pilha(p_inicial: Pilha, p_final:Pilha) -> Pilha:
 
 def Verifica_x(x: int, Lista:list[Pilha]) -> bool: 
     '''
-    Retorna False caso já tenha aparecido o número já tenha sido adicionado na lista de pilhas *Lista* o máximo de vezes possíveis 
+    Retorna False caso o número já tenha sido adicionado na lista de pilhas *Lista* o máximo de vezes possíveis 
     >>> p1 = [1, 2, 2, 1]
     >>> p1 = [2, 2, '', '']
     >>> p1 = ['', '', '', '']
