@@ -1,7 +1,7 @@
 from pilhas import Pilha
 from random import randint
 
-def add_pilhas(n:int) -> list[Pilha]: #Modificar exemplo
+def add_pilhas(n:int) -> list[Pilha]: 
     '''
     Adiciona as *n* pilhas iniciais do jogo em uma lista, com duas pilhas extras para a manipulação dos números.
 
@@ -291,11 +291,11 @@ def Verifica_todas_pilhas(Lista: list[Pilha]) -> bool:
     False
     '''
     for pilha in Lista:
-        if Verifica_pilha(pilha) == False:  # Usa a função existente
+        if Verifica_pilha(pilha) == False: 
             return False
     return True
 
-def imprime_lista(Lista: list[Pilha],n:int): #FAZER NA VERTICAL SE SOBRAR TEMPO e o Franklin quiser MUITOOO
+def imprime_lista(Lista: list[Pilha],n:int): 
     '''
     Imprime na tela todos os elementos de cada pilha separadamente de forma vertical e após finalizar cada pilha imprime o seu número.
 
@@ -338,11 +338,6 @@ def imprime_lista(Lista: list[Pilha],n:int): #FAZER NA VERTICAL SE SOBRAR TEMPO 
 
         
 def main():
-    
-
-    a = Pilha()
-    Insere_num(3, a)
-    print(a.elem)
     n: int = int(input("Digite o numero de pilhas:  "))
     Lista:list = add_pilhas(n)
    #Gera n pilhas com números de 1 até n
