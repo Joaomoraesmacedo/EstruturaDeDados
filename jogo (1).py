@@ -3,6 +3,7 @@ from random import randint
 
 def add_pilhas(n:int) -> list[Pilha]: 
     '''
+    Aviso: '' => Espaço vazio ou lixo!!
     Adiciona as *n* pilhas iniciais do jogo em uma lista, com duas pilhas extras para a manipulação dos números.
 
     >>> lista = add_pilhas(4)
